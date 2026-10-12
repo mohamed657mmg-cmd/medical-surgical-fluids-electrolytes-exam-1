@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluids and Electrolytes Exam</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#07111f,#0b2740,#123b5d);
+    min-height:100vh;
+    color:white;
+}
+
+.container{
+    width:94%;
+    max-width:900px;
+    margin:auto;
+    padding:25px 0;
+}
+
+.card{
+    background:white;
+    color:#111;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+.hidden{display:none!important}
+
+.start-screen{
+    text-align:center;
+    margin-top:35px;
+}
+
+.logo{font-size:52px}
+
+h1{color:#0b3150;margin:12px 0}
+
+.subtitle{
+    color:#666;
+    margin:8px 0;
+    line-height:1.6;
+}
+
+.pray{
+    background:#eef6ff;
+    color:#0b3150;
+    padding:16px;
+    border-radius:12px;
+    margin:25px 0;
+    font-weight:bold;
+    line-height:1.8;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:2px solid #dbe3ea;
+    border-radius:12px;
+    font-size:16px;
+    margin-bottom:15px;
+    outline:none;
+}
+
+input:focus{border-color:#123b5d}
+
+button{
+    width:100%;
+    padding:15px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#0b3150,#123b5d);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:active{transform:scale(.98)}
+
+.exam-header{text-align:center}
+
+.exam-header h2{color:#0b3150}
+
+.student{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:#e5e5e5;
+    border-radius:20px;
+    overflow:hidden;
+    margin:20px 0;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:#123b5d;
+    transition:.3s;
+}
+
+.question-card{
+    background:#f8fafc;
+    border:1px solid #e1e7ec;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.question-number{
+    color:#123b5d;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:18px;
+    font-weight:bold;
+    line-height:1.6;
+    direction:ltr;
+    text-align:left;
+    margin-bottom:15px;
+}
+
+.option{
+    background:white;
+    border:2px solid #dbe3ea;
+    border-radius:12px;
+    padding:13px;
+    margin:10px 0;
+    cursor:pointer;
+    direction:ltr;
+    text-align:left;
+    transition:.2s;
+    line-height:1.5;
+}
+
+.option:hover{
+    background:#eef6ff;
+    border-color:#123b5d;
+}
+
+.option.selected{
+    background:#dcecff;
+    border-color:#123b5d;
+    font-weight:bold;
+}
+
+.option.locked{cursor:not-allowed}
+
+.result{text-align:center}
+
+.score{
+    font-size:48px;
+    font-weight:bold;
+    color:#123b5d;
+    margin:20px 0;
+}
+
+.success,.fail{
+    padding:15px;
+    border-radius:12px;
+    font-weight:bold;
+    line-height:1.8;
+}
+
+.success{
+    background:#e8f7ed;
+    color:#16733a;
+}
+
+.fail{
+    background:#ffebee;
+    color:#c62828;
+}
+
+.review-title{
+    color:#0b3150;
+    margin-top:30px;
+}
+
+.review-card{
+    background:#f8fafc;
+    border:1px solid #e1e7ec;
+    border-radius:15px;
+    padding:18px;
+    margin:15px 0;
+    direction:ltr;
+    text-align:left;
+    line-height:1.7;
+    overflow-wrap:anywhere;
+}
+
+.correct{
+    color:#16803c;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.wrong{
+    color:#c62828;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.footer{
+    text-align:center;
+    color:#777;
+    font-size:13px;
+    margin-top:25px;
+    line-height:1.9;
+}
+
+.footer b{color:#123b5d}
+
+@media(max-width:600px){
+    .card{padding:18px}
+    .question{font-size:16px}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<!-- START SCREEN -->
+<div id="startScreen" class="card start-screen">
+
+    <div class="logo">🩺</div>
+
+    <h1>Medical-Surgical Nursing</h1>
+
+    <div class="subtitle">
+        <strong>Chapter Two: Fluids and Electrolytes</strong>
+    </div>
+
+    <div class="subtitle">
+        MCQ Exam – Moderate Level – 10 Questions
+    </div>
+
+    <div class="subtitle">
+        All questions from the provided lesson only.
+    </div>
+
+    <div class="pray">
+        قبل ما تبدأ تحل<br>
+        صلّي على النبي ﷺ ❤️
+    </div>
+
+    <input
+        type="text"
+        id="studentName"
+        placeholder="Enter your name"
+        autocomplete="off"
+    >
+
+    <button id="startBtn">Start Exam</button>
+
+    <div class="footer">
+        <b>Designed by Mohamed Mahmoud</b><br>
+        <b>Exam Author: Omar Abdel-Tawab</b>
+    </div>
+</div>
+
+
+<!-- EXAM SCREEN -->
+<div id="examScreen" class="card hidden">
+
+    <div class="exam-header">
+        <h2>Medical-Surgical Nursing</h2>
+
+        <div class="subtitle">
+            Chapter Two: Fluids and Electrolytes
+        </div>
+
+        <div class="student">
+            Student: <b id="displayName"></b>
+        </div>
+    </div>
+
+    <div class="progress">
+        <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <button id="submitBtn">Submit Exam</button>
+
+    <div class="footer">
+        <b>Designed by Mohamed Mahmoud</b><br>
+        <b>Exam Author: Omar Abdel-Tawab</b>
+    </div>
+</div>
+
+
+<!-- RESULT SCREEN -->
+<div id="resultScreen" class="card result hidden">
+
+    <div class="logo">🎓</div>
+
+    <h1>Exam Result</h1>
+
+    <p>Student: <b id="resultName"></b></p>
+
+    <div id="score" class="score"></div>
+
+    <div id="resultMessage"></div>
+
+    <h2 class="review-title">Answer Review</h2>
+
+    <div id="reviewContainer"></div>
+
+    <div class="footer">
+        <b>Designed by Mohamed Mahmoud</b><br>
+        <b>Exam Author: Omar Abdel-Tawab</b>
+    </div>
+</div>
+
+</div>
+
+<script>
+const questions = [
+{
+    question:"What percentage of body weight is normally made up of water?",
+    options:["25%","40%","60%","75%"],
+    answer:"60%"
+},
+{
+    question:"Which electrolyte is the main basic salt inside cells?",
+    options:["Sodium","Potassium","Chloride","Calcium"],
+    answer:"Potassium"
+},
+{
+    question:"Which organ is responsible for excreting about one liter of water daily through urine?",
+    options:["Lungs","Skin","Kidneys","Intestines"],
+    answer:"Kidneys"
+},
+{
+    question:"Which of the following can cause dehydration?",
+    options:[
+        "Continuous vomiting",
+        "Drinking enough water",
+        "Normal kidney function",
+        "Balanced water intake"
+    ],
+    answer:"Continuous vomiting"
+},
+{
+    question:"What is the normal blood potassium level?",
+    options:[
+        "1.5–2.0 mEq/L",
+        "2.5–3.0 mEq/L",
+        "3.5–5.0 mEq/L",
+        "6.0–7.0 mEq/L"
+    ],
+    answer:"3.5–5.0 mEq/L"
+},
+{
+    question:"Which of the following is a symptom of potassium deficiency?",
+    options:[
+        "Weak intestinal movement",
+        "Increased heart function",
+        "Increased appetite",
+        "Improved muscle movement"
+    ],
+    answer:"Weak intestinal movement"
+},
+{
+    question:"Which condition can cause increased potassium levels?",
+    options:[
+        "Renal failure",
+        "Normal kidney function",
+        "Drinking water",
+        "Mild thirst"
+    ],
+    answer:"Renal failure"
+},
+{
+    question:"Which of the following is a symptom of calcium deficiency?",
+    options:[
+        "Increased appetite",
+        "Tingling around the mouth",
+        "Excessive urination",
+        "Increased muscle strength"
+    ],
+    answer:"Tingling around the mouth"
+},
+{
+    question:"Which of the following can cause sodium deficiency?",
+    options:[
+        "Diuretics",
+        "Increased water intake only",
+        "Normal liver function",
+        "Normal kidney function"
+    ],
+    answer:"Diuretics"
+},
+{
+    question:"Why should sodium deficiency be treated slowly?",
+    options:[
+        "To prevent kidney stones",
+        "To prevent brain damage",
+        "To increase potassium levels",
+        "To prevent abdominal distension"
+    ],
+    answer:"To prevent brain damage"
+}
+];
+
+let examQuestions = [];
+let selectedAnswers = {};
+let studentName = "";
+
+function shuffle(array){
+    const arr = [...array];
+
+    for(let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+
+    return arr;
+}
+
+/* START EXAM */
+document.getElementById("startBtn").addEventListener("click",function(){
+
+    const input = document.getElementById("studentName");
+    studentName = input.value.trim();
+
+    if(!studentName){
+        alert("Please enter your name first.");
+        input.focus();
+        return;
+    }
+
+    document.getElementById("displayName").textContent = studentName;
+
+    document.getElementById("startScreen").classList.add("hidden");
+    document.getElementById("examScreen").classList.remove("hidden");
+
+    examQuestions = shuffle(questions);
+    selectedAnswers = {};
+
+    renderQuestions();
+});
+
+/* DISPLAY QUESTIONS */
+function renderQuestions(){
+
+    const container = document.getElementById("questionsContainer");
+    container.innerHTML = "";
+
+    examQuestions.forEach(function(q,index){
+
+        const card = document.createElement("div");
+        card.className = "question-card";
+
+        const number = document.createElement("div");
+        number.className = "question-number";
+        number.textContent = "Question " + (index + 1) + " of " + examQuestions.length;
+        card.appendChild(number);
+
+        const question = document.createElement("div");
+        question.className = "question";
+        question.textContent = q.question;
+        card.appendChild(question);
+
+        const shuffledOptions = shuffle(q.options);
+
+        shuffledOptions.forEach(function(answer,indexOption){
+
+            const option = document.createElement("div");
+            option.className = "option";
+
+            option.textContent =
+                String.fromCharCode(65 + indexOption) + ") " + answer;
+
+            option.dataset.answer = answer;
+
+            option.addEventListener("click",function(){
+                selectAnswer(index,answer,card);
+            });
+
+            card.appendChild(option);
+        });
+
+        container.appendChild(card);
+    });
+
+    updateProgress();
+}
+
+/* SELECT ONE ANSWER */
+function selectAnswer(questionIndex,answer,card){
+
+    if(selectedAnswers[questionIndex] !== undefined){
+        return;
+    }
+
+    selectedAnswers[questionIndex] = answer;
+
+    const options = card.querySelectorAll(".option");
+
+    options.forEach(function(option){
+        option.classList.add("locked");
+
+        if(option.dataset.answer === answer){
+            option.classList.add("selected");
+        }
+    });
+
+    updateProgress();
+}
+
+/* PROGRESS */
+function updateProgress(){
+
+    const answered = Object.keys(selectedAnswers).length;
+    const total = examQuestions.length;
+
+    document.getElementById("progressBar").style.width =
+        (answered / total * 100) + "%";
+}
+
+/* SUBMIT EXAM */
+document.getElementById("submitBtn").addEventListener("click",function(){
+
+    const answered = Object.keys(selectedAnswers).length;
+    const total = examQuestions.length;
+
+    if(answered < total){
+        alert(
+            "Please answer all questions first.\n\nAnswered: " +
+            answered + "/" + total
+        );
+        return;
+    }
+
+    if(!confirm("Are you sure you want to submit the exam?")){
+        return;
+    }
+
+    calculateResult();
+});
+
+/* CALCULATE SCORE */
+function calculateResult(){
+
+    let score = 0;
+
+    examQuestions.forEach(function(q,index){
+        if(selectedAnswers[index] === q.answer){
+            score++;
+        }
+    });
+
+    const total = examQuestions.length;
+    const percentage = Math.round((score / total) * 100);
+
+    document.getElementById("examScreen").classList.add("hidden");
+    document.getElementById("resultScreen").classList.remove("hidden");
+
+    document.getElementById("resultName").textContent = studentName;
+    document.getElementById("score").textContent = score + " / " + total;
+
+    let message;
+
+    if(percentage >= 85){
+        message = `<div class="success">Excellent! 🌟<br>Your Score: ${percentage}%</div>`;
+    }else if(percentage >= 70){
+        message = `<div class="success">Very Good! 👏<br>Your Score: ${percentage}%</div>`;
+    }else if(percentage >= 50){
+        message = `<div class="success">Good Job! 👍<br>Your Score: ${percentage}%</div>`;
+    }else{
+        message = `<div class="fail">Keep Studying! 💪<br>Your Score: ${percentage}%</div>`;
+    }
+
+    document.getElementById("resultMessage").innerHTML = message;
+
+    showReview();
+}
+
+/* ANSWER REVIEW */
+function showReview(){
+
+    const container = document.getElementById("reviewContainer");
+    container.innerHTML = "";
+
+    examQuestions.forEach(function(q,index){
+
+        const userAnswer = selectedAnswers[index];
+        const isCorrect = userAnswer === q.answer;
+
+        const card = document.createElement("div");
+        card.className = "review-card";
+
+        const title = document.createElement("strong");
+        title.textContent = "Question " + (index + 1);
+        card.appendChild(title);
+
+        const question = document.createElement("p");
+        question.textContent = q.question;
+        card.appendChild(question);
+
+        if(isCorrect){
+
+            const correct = document.createElement("div");
+            correct.className = "correct";
+            correct.textContent = "✅ Correct Answer: " + q.answer;
+            card.appendChild(correct);
+
+        }else{
+
+            const wrong = document.createElement("div");
+            wrong.className = "wrong";
+            wrong.textContent = "❌ Your Answer: " + userAnswer;
+            card.appendChild(wrong);
+
+            const correct = document.createElement("div");
+            correct.className = "correct";
+            correct.textContent = "✅ Correct Answer: " + q.answer;
+            card.appendChild(correct);
+        }
+
+        container.appendChild(card);
+    });
+}
+</script>
+
+</body>
+  </html>
+  
